@@ -1,0 +1,15 @@
+<div *ngIf="auth.IsLogged() == false; else elseBlock">
+    <form name="form" (ngSubmit)="login()" class="row form">
+        <div class="form-group col-sm-">
+            <input type="text" #username="ngModel" [(ngModel)]="user.username"  class="form-control" name="identifiant" placeholder="identifiant">
+        </div>
+        <div class="form-group col-sm-">
+            <input type="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" name="motdepasse" placeholder="mot de Passe">
+        </div>
+        <button type="submit" class="btn btn-primary col-sm-">Envoyer</button>
+    </form>
+</div>
+
+<ng-template #elseBlock class="row">
+    <button (click)="logout()" class="btn btn-primary">Déconnexion</button>
+</ng-template>

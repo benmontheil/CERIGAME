@@ -1,0 +1,6 @@
+<app-bandeau [messageIn]='bandeauInfo'></app-bandeau>
+<app-login (messageOutBandeau)='receiveNotification($event)'></app-login>
+<div *ngIf="auth.IsLogged() == true" class="row">
+  <app-profil class="col-sm"></app-profil>
+  <app-quizz class="col-sm"></app-quizz>
+</div>

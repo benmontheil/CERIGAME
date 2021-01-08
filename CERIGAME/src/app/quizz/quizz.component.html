@@ -1,0 +1,34 @@
+<button *ngIf="theme == ''; else elseBlock" (click)="startQuizz()">Démarrer Quizz</button>
+<ng-template #elseBlock>
+    <p>Thème: {{theme}}</p>
+
+    <div *ngIf="answersNumber == 0; else elseBlock">
+        <button (click)="chooseDifficulty('facile')" class="btn btn-primary">Facile</button>
+        <button (click)="chooseDifficulty('intermédiaire')" class="btn btn-primary">Intermédiaire</button>
+        <button (click)="chooseDifficulty('difficile')" class="btn btn-primary">Difficile</button>
+    </div>
+
+    <ng-template #elseBlock>
+
+        <div *ngIf="reponse == ''; else elseBlock">
+            <p>Temps: {{time}}</p>
+            <p>{{currentQuizz.quizz[questionId].question}}</p>
+            <div class="col-sm-12 form-group" *ngFor="let proposition of currentQuizz.quizz[questionId].propositions">
+                <button (click)="pickProposition(proposition)" class="btn btn-primary">{{proposition}}</button>
+            </div>
+        </div>
+
+        <ng-template #elseBlock>
+            <p>{{reponse}} réponse</p>
+            <p>La bonne réponse est {{bonneReponse}}</p>
+            <p>{{currentQuizz.quizz[questionId].anecdote}}</p>
+            <button (click)="getQuestion()" class="btn btn-primary">Suivant</button>
+        </ng-template>
+
+    </ng-template>
+
+</ng-template>
+
+<div *ngIf="fin == true; ">
+    <p>Fin du quizz, votre score est: {{score}}</p>
+</div>
